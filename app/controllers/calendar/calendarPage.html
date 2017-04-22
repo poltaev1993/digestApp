@@ -1,0 +1,150 @@
+
+<div class="container white-container" ng-init="init()">
+    <div class="tools-panel text-left">
+        <div class="row">
+            <div class="col-md-2">
+                <a class="back-link" href="#!/calendar-list"><i class="glyphicon glyphicon-arrow-left"></i> [[ 'back' | translate ]]</a>
+            </div>
+            <div class="col-md-8">
+                <h1 class="text-center calendar-title"> [[ calendar.calendar_name  ]]</h1>
+            </div>
+            <div class="col-md-2 text-right">
+                <select class="select2 calendar-selectbox" ng-model="selectedCalendar" ng-change="getCalendar()"
+                        ng-options="calendar as calendar.calendar_name for calendar in calendars track by calendar.id"
+                        name="calendar" id="calendar" >
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- ui-angular-calendar -->
+    <div id="ang_calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="BookingCalendar"></div>
+
+    <!-- Start booking's POPUP windiow-->
+    <div class="booking-window popup-booking-animate" ng-style="bookingWindowStyles" ng-show="(popupAppearence && $parent.isLogged)">
+        <!-- Start input booking NAME block -->
+        <div class="calendar-input">
+            <div class="calendar-created-by_username" ng-show="IsBookNameFilled">
+                <span class="created-by-label">Created by:</span> <div class="username">[[ created_by_username ]]</div>
+            </div>
+            <input type="text" placeholder="[[ 'enter_name' | translate ]]" class="form-control"
+                   ng-model="bookName"
+                   focus-me="[[ focusBookNameOn ]]" ng-hide="IsBookNameFilled"
+                   ng-blur="(bookName != '' && bookName != null) ? IsBookNameFilled = true : IsBookNameFilled = false; focusBookNameOn = false">
+            <h2 class="text-left"
+                ng-show="IsBookNameFilled" ng-click="IsBookNameFilled = false; focusBookNameOn = true;">[[ bookName ]]</h2>
+        </div>
+        <!-- End input booking NAME block -->
+        <div class="user-selectbox">
+            <label for="user-participants">Participants:</label>
+            <div class="row">
+                <div class="col-xs-9">
+                    <ui-select id="user-participants" multiple
+                               ng-model="selectedUsers"
+                               ng-change="storeSelectedUsers(selectedUsers)"
+                               theme="bootstrap" ng-disabled="ctrl.disabled"
+                               close-on-select="false" title="Select users" class="user-select">
+                        <ui-select-match placeholder="Select users...">[[ $item.username ]]</ui-select-match>
+                        <ui-select-choices repeat="user in users | filter:$select.search">
+                            [[ user.username ]]
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-xs-3">
+                    <button ng-show="pageProperties.IsSaveUserButtonVisible" class="btn btn-success"
+                            ng-click="updateUsers(selectedUsers)">Save</button>
+                    <span ng-show="pageProperties.usersSaved" class="notify-info notify-info-stored">Saved.</span>
+                </div>
+            </div>
+
+            <hr>
+
+        </div>
+
+        <!-- Start input booking's START and END DATE TIME block -->
+        <div class="row calendar-input">
+            <!-- Start input booking's START DATE TIME block -->
+            <div class="col-md-6">
+                <label class="block">[[ 'start_date' | translate ]]</label>
+                <!-- Start DATEPICKER -->
+                <p class="input-group">
+                    <input type="text" class="form-control"
+                           ng-model="sDate" uib-datepicker-popup
+                           is-open="start_date_popup.opened" datepicker-options="dateOptions" ng-required="true"
+                           close-text="Close" alt-input-formats="altInputFormats"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="showDatePopup(start_date_popup)">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+                <!-- End DATEPICKER -->
+
+                <!-- Start TIMEPICKER -->
+                <div class="text-right">
+                    <div class="timepicker-block">
+                        <div uib-timepicker ng-model="bookingStartTime" ng-change="changed()" hour-step="hstep"
+                             minute-step="mstep" show-meridian="ismeridian"></div>
+                    </div>
+                </div>
+                <!-- End TIMEPICKER -->
+            </div>
+            <!-- End input booking's START DATE TIME block -->
+
+            <!-- Start input booking's END DATE TIME block -->
+            <div class="col-md-6">
+                <label class="block">[[ 'end_date' | translate ]]</label>
+                <!-- Start DATEPICKER -->
+                <p class="input-group">
+                    <input type="text" class="form-control"
+                           ng-model="eDate" uib-datepicker-popup
+                           is-open="end_date_popup.opened" datepicker-options="dateOptions" ng-required="true"
+                           close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="showDatePopup(end_date_popup)">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+                <!-- End DATEPICKER -->
+
+                <!-- Start TIMEPICKER -->
+                <div class="text-right">
+                    <div class="timepicker-block">
+                        <div uib-timepicker ng-model="bookingEndTime" ng-change="changed()" hour-step="hstep"
+                             minute-step="mstep" show-meridian="ismeridian"></div>
+                    </div>
+                </div>
+                <!-- End TIMEPICKER -->
+            </div>
+            <!-- End input booking's END DATE TIME block -->
+        </div>
+        <!-- End input booking's START and END DATE TIME block -->
+
+        <!-- Start input booking DESCRIPTION block -->
+        <div class="row calendar-input">
+            <div class="col-md-12">
+                <p ng-show="IsBookDescrFilled"
+                       ng-click="IsBookDescrFilled = false; focusBookDescrOn = true">[[ bookDescr ]]</p>
+                <textarea focus-me="[[ focusBookDescrOn ]]" name="topic" id="topic" class="form-control" rows="3"
+                          placeholder="[[ 'enter_description' | translate ]]"
+                          ng-model="bookDescr"
+                          ng-hide="IsBookDescrFilled"
+                          ng-blur="(bookDescr != '' && bookDescr != null) ? IsBookDescrFilled = true : IsBookDescrFilled = false;
+                                    focusBookDescrOn = false;"></textarea>
+            </div>
+        </div>
+        <!-- End input booking DESCRIPTION block -->
+
+        <!-- Start input booking BOOK button block -->
+        <div class="row calendar-input">
+            <div class="col-md-12">
+                    <button ng-hide="busyTime" class="btn btn-success block" ng-click="book()">[[ 'book' | translate ]]</button>
+                <button ng-show="busyTime" class="btn btn-danger block" ng-click="removeBook()">[[ 'remove' | translate ]]</button>
+                <button class="btn btn-default" ng-click="storeUpdates();">[[ 'close' | translate ]]</button>
+            </div>
+        </div>
+        <!-- End input booking BOOK button block -->
+    </div>
+    <!-- End booking's popup windiow-->
+</div>

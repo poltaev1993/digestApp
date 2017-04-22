@@ -1,0 +1,482 @@
+@font-face
+  font-family: 'Expletus_Sans_Regular';
+  src: url('../fonts/Expletus_Sans/ExpletusSans-Regular.ttf');
+  font-style normal;
+
+@font-face
+  font-family: 'Expletus_Sans_Medium';
+  src: url('../fonts/Expletus_Sans/ExpletusSans-Medium.ttf');
+  font-style normal;
+
+@font-face
+  font-family: 'Expletus_Sans_Italic';
+  src: url('../fonts/Expletus_Sans/ExpletusSans-Italic.ttf');
+  font-style normal;
+
+/* Main fonts */
+mainFonts = {
+  regular: 'Expletus_Sans_Regular',
+  medium: 'Expletus_Sans_Medium',
+  italic: 'Expletus_Sans_Italic'
+}
+
+.position-relative
+  position: relative
+.vertical-align
+  display inline-block
+
+.positionRelative
+  position relative
+.calendar-created-by_username
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  font-size: 12px;
+  .created-by-label
+    color #999
+    padding 1px 0px
+  .username
+    padding 1px 3px
+    display inline-block
+    color: #fff;
+    background-color: #127ec2;
+.calendar-input
+  margin-bottom 10px
+.timepicker-block
+  display inline-block
+  background-color: #e1e1e1
+  padding: 5px 10px
+  border-radius 6px
+.uib-timepicker
+  .btn.btn-link
+    padding 1px
+    .glyphicon
+      &:before
+        font-size: 11px
+.block
+  display block
+.inline-block
+  display inline-block
+/* Colors */
+appsColors = {
+  pink: #127ec2,
+  purple: #164789,
+  gray: #e1e1e1
+}
+
+.white-container
+  padding 20px 40px
+  background-color: #fff
+h2
+  &.app-title
+    font-size 42px
+
+html
+body
+  margin: 0
+  padding: 30px 0
+  font-size 14px
+  font-family  mainFonts[regular], sans-serif
+  background-color: #fff
+  background-image: url(../img/bg.jpg)
+  background-size: cover
+
+/* customize buttons */
+.btn
+  &.remove-btn
+    position absolute
+    top: -10px;
+    right: 5px;
+    vertical-align middle
+    color #fff
+    padding 0px
+    margin: 0px
+    line-height 25px
+    height 25px
+    width 25px
+    text-align center
+    font-size 10px
+    border-radius 50%
+    background-color: appsColors.pink
+    z-index 1
+  &.plus-button
+    vertical-align middle
+    color #fff
+    padding 0px
+    margin: 20px 0
+    line-height 50px
+    height 50px
+    width 50px
+    text-align center
+    &:hover
+      color #fff
+  &.btn-full-width
+    text-align center
+    width 100%
+    font-size 18px
+    padding: 5px
+  &.pink-btn
+    background-color: appsColors.pink
+    color #fff
+  &.purple-btn
+    background-color: appsColors.purple
+    color #fff
+
+/* Extra info */
+.extra-info
+  margin 15px 0
+  font-size 13px
+  color #999999
+  a
+    color #999999
+    &:hover
+      color #2aabd2
+/* select2 */
+.select2-container--default .select2-results__option--highlighted[aria-selected]
+  background-color: appsColors.pink
+.header-elements
+  border-radius 5px
+  margin 10px 0
+  background-color: #fff
+  padding: 25px 35px
+  .auth-buttons
+    margin 13px 0
+    a
+      font-size 15px
+      margin-right 5px
+  .website-languages
+    margin 20px 0
+    min-width 70px
+    + .select2
+      text-align left
+      margin: 17px 0
+      .select2-selection--single
+        border-color #e1e1e1
+      .select2-selection__arrow
+        background-color: appsColors.pink
+        background-position: center center
+        background-image: url(../img/arrow_down.png)
+        background-repeat: no-repeat
+        background-size: 10px
+        border none
+        b
+          display none
+
+.footer
+  background-color: #fff
+  text-align center
+  font-size 14px
+  padding   20px 0
+  margin 20px 0
+/* application */
+.one-app-item
+  &:nth-child(even)
+    .app
+      background-color: appsColors.purple
+  .app
+    position: relative
+    display block
+    padding: 30px
+    background-color: appsColors.pink
+    color #fff
+    padding-bottom 100px
+    transition background-color  0.35s
+    height 300px
+    &:hover
+      text-decoration none
+      background-color: #3f324e
+    p
+      font-size 24px
+      color #fff
+      margin-left 100px
+      text-align right
+    .app-icon
+      position absolute
+      bottom 30px
+      left 30px
+
+/* Sign in page */
+.white-container
+  background-color: #fff
+  padding 30px 20px
+  .form-auth
+    max-width 350px
+    margin 0 auto
+  h2
+    text-align center
+    font-size 28px
+
+.booking-window
+  position: absolute
+  top 0
+  left 0
+  z-index 100
+  max-width 400px
+  width 100%
+  padding 25px 20px
+  background-color: #fff
+  border 1px solid #e1e1e1
+  border-radius 6px
+  &.popup-window
+    top 100px
+    left 50%
+    transform translateX(-50%)
+  h2
+    text-align left
+    font-size 18px
+    margin 5px 0
+    textarea
+      &.form-control
+        width: 100%
+    input
+      &.time-input
+        width 50px
+        height 25px
+        display inline-block
+      &.form-control
+        padding 5px 10px
+
+/* Start calendar blocks */
+.metacalendar-style
+  height 90px
+  .remove-btn
+    transition transform 0.35s
+    transform scale(0, 0)
+  &:hover
+    .remove-btn
+      transform scale(1, 1)
+    a
+      color #fff
+      text-decoration none
+  &:nth-child(n)
+    a
+      background-color: rgba(62, 49, 77, 0.8)
+      &:hover
+        background-color: rgba(62, 49, 77, 1)
+  a
+    position: relative
+    padding 10px
+    display block
+    height 100%
+    color #fff
+    text-underline none
+    transition background-color 0.75s
+    h2
+      margin 0px
+      text-align left
+      font-size 18px
+    .calendar-type
+      position absolute
+      bottom 10px
+      right 10px
+    .created-by
+      color: white;
+      bottom: 10px;
+      position: absolute;
+      left: 0;
+      left: 10px;
+      font-size: 11px;
+
+/* End calendar blocks */
+
+
+.button-field
+  height 90px
+  .plus-button
+    border-radius 50%
+
+/* Profile */
+.user-info-row
+  margin 10px 0
+  .profile-edit
+    background-color: transparent
+    border none
+    box-shadow none
+    padding: 0
+    margin: 0
+    color #999999
+    &:hover
+      text-decoration underline
+  .avatar
+    background-color: #fff
+    padding: 10px
+    border-radius 5px
+  .user-and-contacts
+    .login-info
+      margin-bottom 15px
+    .item
+      background-color: #fff
+      padding: 20px 30px
+      border-radius 5px
+      .user-name
+        margin: 0
+      span
+        margin-top -10px
+        color #0079d2
+        font-size 12px
+    .info
+      .item-info
+        &:first-child
+          text-transform lowercase
+          color #999999
+        &:last-child
+          color #333
+          font-style: italic
+          font-weight 700
+.page-title
+  padding: 10px 0
+  margin 5px
+  font-size 18px
+  background-color: #3e314d
+  border-radius 5px
+  text-transform: uppercase;
+  color #fff
+  text-align center
+
+.back-link
+  color #999999
+  font-size: 12px;
+.calendar-title
+  margin: 0;
+  font-size: 24px;
+  text-transform: uppercase;
+.fc
+  .fc-toolbar
+    h2
+      font-size: 15px;
+      line-height: 24px;
+      color: #999999;
+      margin-right: 27px;
+  .fc-toolbar
+    margin-top 5px
+    button
+      position: relative;
+      background-color: #127ec2;
+      color: #fff;
+      height: 25px;
+      line-height: 25px;
+      background-image: none
+.calendar-selectbox
+  padding: 2px;
+  border-color: #e1e1e1;
+  color: #333333;
+  font-size: 13px;
+  min-width: 150px;
+  border-radius: 5px;
+
+/* Animate*/
+.popup-booking-animate
+  opacity 1
+  transform scale(1, 1)
+  transition all 0.35s
+  &.ng-hide
+    opacity 0
+    transform scale(0.7, 0.7)
+.popup-animate
+  opacity 1
+  transform scale(1, 1) translateX(-50%)
+  transition all 0.35s
+  &.ng-hide
+    opacity 0
+    transform scale(0.7, 0.7) translateX(-50%)
+.view-animate
+  &.ng-enter
+    animation fadeIn 0.75s
+.metacalendar-style
+  margin 15px 0
+  &.ng-enter
+    animation bounceIn 0.75s
+  &.ng-leave
+    animation bounceOut 0.75s
+  &.ng-repeat
+    animation pulse 0.75s
+
+/* End Animation block*/
+
+
+/* small loader*/
+.apps-loader
+  &.apps-loader-hide
+    &:before
+      height 0
+  &:before
+    transition height 0.35s
+    //content 'Loading...' !important
+    display block !important
+    height 50px
+    background-image: url(../img/apps-loader.gif)
+    background-position: center center
+    background-repeat: no-repeat
+    background-size: 50px
+    margin-bottom 10px
+    /*text-align: center;
+    padding-top: 50px;
+    color: #1f9bff;
+    margin-bottom: 30px;*/
+
+
+/* End small loader*/
+
+/* Big loader */
+.big-loader
+  position fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 100
+  background-color: #fff
+  .logo
+    position: absolute
+    top: 50%
+    left: 50%
+    transform translate(-50%, -50%)
+  .loader-progress-bar
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-image: url(../img/white_black_logo.png)
+    background-size: 313px 64px
+    background-repeat: no-repeat
+    animation-name bigLogoColorizeContent
+    animation-duration 7s
+    animation-iteration-count infinite
+    z-index 9
+    &:after
+      content ' '
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background-color: rgba(255, 255, 255, 0.6);
+      z-index 10
+/* end big loader*/
+
+/* select2 */
+.user-select
+  .ui-select-search
+    width auto !important
+.user-selectbox
+  margin-bottom: 15px
+
+.notify-info
+  &.notify-info-stored
+    color #999
+    font-size 13px
+
+@keyframes bigLogoColorizeContent
+  0%
+    left 0
+    background-position-x: 0px
+  50%
+    left 200px
+    background-position-x: -200px
+  75%
+    left 250px
+    background-position-x: -250px
+  100%
+    left 313px
+    background-position-x: -313px

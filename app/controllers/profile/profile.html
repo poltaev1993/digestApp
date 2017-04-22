@@ -1,0 +1,82 @@
+<div class="container" ng-init="init()">
+    <h2 class="page-title">Cabinet</h2>
+
+    <!-- Begin user information row -->
+    <div class="row user-info-row">
+        <div class="col-xs-3 col-md-3">
+            <div class="avatar">
+                <img class="img-responsive" src="/metacalendar/public/img/ava_m.png" alt="avatar profile">
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9">
+            <div class="row user-and-contacts">
+                <div class="col-xs-12 col-xs-6 item" ng-if="parentUser.is_user_datas_filled === 1 && !editStatus">
+                    <h4 class="user-name">[[ parentUser.name ]] [[ parentUser.surname ]]</h4>
+                    <div class="login-info">
+                        <span class="login">[[ parentUser.username ]]</span>
+                    </div>
+
+                    <!--<div class="row info">-->
+                        <!--<div class="col-xs-6">Birthday:</div>-->
+                        <!--<div class="col-xs-6">17 of February</div>-->
+                    <!--</div>-->
+
+                    <div class="row info">
+                        <div class="col-xs-3 item-info">Email:</div>
+                        <div class="col-xs-9 item-info ">[[ parentUser.email ]]</div>
+                    </div>
+
+                    <div class="row info">
+                        <div class="col-xs-3 item-info">Position:</div>
+                        <div class="col-xs-9 item-info ">[[ parentUser.position ]]</div>
+                    </div>
+                    <div class="text-right">
+                        <button class="profile-edit" ng-click="showEdit()">Edit</button>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-xs-6 item" ng-if="parentUser.is_user_datas_filled === 0 || editStatus">
+                    <form ng-submit="updateUserInfo()">
+                        <div class="row info">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="position">Name:</label>
+                                    <input ng-model="parentUser.name"
+                                           class="form-control" placeholder="Enter name..." type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="position">Last name:</label>
+                                    <input ng-model="parentUser.surname"
+                                           class="form-control" placeholder="Enter last name..." type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row info">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="position">Position:</label>
+                                    <input ng-model="parentUser.position"
+                                           id="position" class="form-control" placeholder="Enter position..." type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn pink-btn">Save</button>
+                        <button class="btn btn-default " ng-click="back()">Back</button>
+                    </form>
+                </div>
+
+                <div class="col-xs-12 col-xs-6 item">
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <!-- End user information row -->
+
+</div>

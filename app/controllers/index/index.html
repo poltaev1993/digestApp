@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row apps-loader" ng-class="miniLoader ? 'apps-loader-hide' : ''">
+        <calendar-list class="metacalendar-style repeated-item" ng-repeat="calendar in calendars track by calendar.id" calendar-object="calendar">
+            <button ng-show="calendar.user_id === parentUser.id" class="btn remove-btn" ng-click="removeCalendar(calendar)"><i class="fa fa-close"></i></button>
+        </calendar-list>
+        <!-- Start add calendar button -->
+        <div class="col-xs-2 col-md-2 c_item button-field" ng-show="$parent.isLogged">
+            <button class="btn plus-button pink-btn" ng-click="popupAppearence = true"><i class="fa fa-plus"></i></button>
+        </div>
+        <!-- End add calendar button -->
+    </div>
+</div>
+
+<!-- Start booking's POPUP windiow-->
+<div class="booking-window popup-window popup-animate" ng-style="bookingWindowStyles" ng-show="popupAppearence">
+    <form ng-submit="addCalendar()">
+        <h2 class="text-center">[[ 'add_new_calendar' | translate ]]</h2>
+
+        <!-- Start input calendar name block -->
+        <div class="row calendar-input">
+            <div class="col-md-12">
+                <label for="calendar_name">[[ 'calendar_name' | translate ]]</label>
+                <input id="calendar_name" type="text" class="form-control"
+                       placeholder="[[ 'enter_calendar_name' | translate ]]" ng-model="tempCalendar.calendar_name">
+            </div>
+        </div>
+        <!-- End input calendar name block -->
+
+        <div class="row calendar-input">
+            <div class="col-md-12">
+                <div class="checkbox">
+                    <label>
+                        <input ng-model="tempCalendar.is_private"
+                                  type="checkbox"
+                                  ng-change="(tempCalendar.is_private == true) ? tempCalendar.calendar_type = 'private' :
+                                                                            tempCalendar.calendar_type = 'public'">
+                        [[ 'private' | translate ]]
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row calendar-input">
+            <div class="col-md-12">
+                <button class="btn pink-btn" type="submit">[[ 'add' | translate ]]</button>
+                <a class="btn btn-default" ng-click="close()">[[ 'close' | translate ]]</a>
+            </div>
+        </div>
+    </form>
+</div>
+

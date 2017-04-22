@@ -1,0 +1,23 @@
+{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "html5-boilerplate": "^5.3.0",
+    "angular-ui-calendar": "latest",
+    "angular-local-storage": "^0.5.2",
+    "animate.css": "^3.5.2",
+    "angular-translate-loader-static-files": "^2.13.0",
+    "angular-translate-storage-local": "^2.13.0"
+  },
+  "devDependencies": {
+    "angular-translate": "^2.13.0"
+  }
+}

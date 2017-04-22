@@ -1,0 +1,85 @@
+<div class="container white-container">
+    <form name="registerForm" class="form-auth" ng-submit="registr()"  method="POST">
+        <div id="fos_user_registration_form">
+            <h2>[[ 'sign_in' | translate ]]</h2>
+
+            <div class="form-group">
+                <input ng-model="name"
+                       ng-maxlength="50"
+                       required
+                       type="text" id="name" class="form-control" name="_name"
+                       placeholder="[[ 'name' | translate ]]" required="required" />
+            </div>
+
+            <div class="form-group">
+                <input ng-model="surname"
+                       ng-maxlength="50"
+                       required
+                       type="text" id="surname" class="form-control" name="_surname"
+                       placeholder="[[ 'surname' | translate ]]" required="required" />
+            </div>
+
+            <div class="form-group">
+                <input ng-model="email"
+                       ng-maxlength="50"
+                       required
+                        type="text" id="email" class="form-control" name="_email"
+                       placeholder="[[ 'email' | translate ]]" required="required" />
+                <!-- using attribute directives -->
+                <div ng-messages="registerForm._email.$error" role="alert">
+                    <div ng-message="required">[[ 'this_field_is_required' | translate ]]</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input ng-model="username"
+                       ng-maxlength="50"
+                       required
+                       type="text" id="username" class="form-control" name="_username"
+                       placeholder="[[ 'username' | translate ]]" required="required" />
+                <!-- using attribute directives -->
+                <div ng-messages="registerForm._username.$error" role="alert">
+                    <div ng-message="required">[[ 'this_field_is_required' | translate ]]</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input ng-model="password1"
+                       ng-minlength="6"
+                       ng-maxlength="16"
+                       required
+                       type="password" id="password1" class="form-control" name="_password1"
+                       placeholder="Password" required="required" />
+
+                <!-- using attribute directives -->
+                <div ng-messages="registerForm._password1.$error" role="alert">
+                    <div ng-message="required">[[ 'this_field_is_required' | translate ]]</div>
+                    <div ng-message="minlength">[[ 'minimal_password_length_is' | translate ]] 6</div>
+                    <div ng-message="maxlength">[[ 'maximum_password_length_is' | translate ]] 16</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input ng-model="password2"
+                       ng-minlength="6"
+                       ng-maxlength="16"
+                       required
+                       type="password" id="password2" class="form-control" name="_password2"
+                       placeholder="[[ 'repeat_password' | translate ]]" required="required"
+                       ng-change="(password2 == null || password2 == '') ? isEqualPasswords = true : isEqualPasswords = false" />
+
+                <!-- using attribute directives -->
+                <div ng-messages="registerForm._password2.$error" role="alert">
+                    <div ng-message="required">[[ 'this_field_is_required' | translate ]]</div>
+                    <div ng-message="minlength">[[ 'minimal_password_length_is' | translate ]] 6</div>
+                    <div ng-message="maxlength">[[ 'maximum_password_length_is' | translate ]] 16</div>
+                </div>
+
+            </div>
+
+        </div>
+        <div>
+            <input class="btn pink-btn btn-full-width" type="submit" value="[[ 'email' | translate ]]Send">
+        </div>
+    </form>
+</div>

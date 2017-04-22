@@ -1,0 +1,7 @@
+
+<div class="container" ng-init="init()">
+    <div class="row applications apps-loader" ng-class="miniLoader ? 'apps-loader-hide' : ''">
+        <meta-apps-list ng-repeat="appItem in apps" meta-apps-object="appItem"></meta-apps-list>
+    </div>
+</div>
+

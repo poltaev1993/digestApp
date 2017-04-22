@@ -1,0 +1,33 @@
+{
+  "sign_in": "Sign in",
+  "sign_up": "Sign up",
+  "logout": "Logout",
+  "welcome": "Welcome,",
+  "develeoped_by": "Developed by METADATA S.L.",
+  "username": "Username",
+  "password": "Password",
+  "remember_me": "Remember me",
+  "login": "Login",
+
+  "back": "Back",
+  "enter_name": "Enter name...",
+  "start_date": "Start date",
+  "end_date": "End date",
+  "enter_description": "Enter description...",
+  "book": "Book",
+  "remove": "Remove",
+  "close": "Close",
+
+
+  "add_new_calendar": "Add new calendar",
+  "calendar_name": "Calendar name:",
+  "enter_calendar_name": "Enter calendar name...",
+  "private": "private",
+  "add": "Add",
+
+  "email": "Email",
+  "this_field_is_required": "This field is required",
+  "maximum_password_length_is": "Maximum password length is",
+  "minimal_password_length_is": "Minimal password length is",
+  "repeat_password": "Repeat password..."
+}

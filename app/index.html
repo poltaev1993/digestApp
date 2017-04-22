@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="[[ lang ]]" ng-app="metacalendar" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="[[ lang ]]" ng-app="metacalendar" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="[[ lang ]]" ng-app="metacalendar" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="[[ lang ]]" ng-app="metacalendar" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <!--Animate.css-->
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="public/css/app.css">
+    <link rel="stylesheet" href="public/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+    <link rel="stylesheet" href="public/lib/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
+    <link rel="stylesheet" href="public/lib/select2/css/select2.min.css">
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">
+    <link rel="stylesheet" href="public/lib/fontawesome/css/font-awesome.min.css">
+
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="mainController" ng-controller="MainController" ng-cloak ng-init="init()">
+        <!--BEGIN HEADER-->
+        <header class="header container">
+            <div class="row header-elements">
+                <div class="col-xs-12 col-md-4 h_e_item">
+                    <div class="auth-buttons">
+                        <div ng-if="!isLogged">
+                            <a href="#!/auth" class="btn pink-btn">[[ 'sign_in' | translate ]]</a>
+                            <a href="#!/registration" class="btn purple-btn">[[ 'sign_up' | translate ]]</a>
+                        </div>
+
+                        <div ng-if="isLogged">
+                            <a ng-click="logout()" class="btn pink-btn">[[ 'logout' | translate ]]</a>
+                            [[ 'welcome' | translate ]] <a href="#!/profile">[[ user.username ]]</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4 h_e_item">
+                    <a href="#!/" class="logo">
+                        <img src="public/img/logo.png" alt="meta apps">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-md-4 h_e_item text-right">
+                    <select ng-model="selectedLang"
+                            ng-change="changeLanguage(selectedLang)"
+                            ng-options="lang as lang for lang in languages" class="select2 website-languages text-left">
+                    </select>
+                </div>
+            </div>
+        </header>
+        <!--END HEADER-->
+
+        <!--BEGIN content-->
+        <div class="content-block">
+            <div ng-view class="view-animate"></div>
+        </div>
+        <!--End content-->
+
+        <!--Begin footer block-->
+        <footer class="container footer">
+            <h5>[[ 'develeoped_by' | translate ]]</h5>
+        </footer>
+        <!--End footer block-->
+        <div class="big-loader" ng-hide="rootVars.isContentReady || rootVars.location != '/'">
+            [[ isContentReady ]]
+            [[ rootVars.location === '/' ]]
+            [[ isContentReady && rootVars.location === '/' ]]
+            <div class="logo">
+                <div class="loader-progress-bar"></div>
+                <img src="public/img/logo.png" alt="Meta Apps" width="313">
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery, moment, and angular have to get included before fullcalendar -->
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/public/build/jquery-tools.js"></script>
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <!--Angular tools-->
+    <script src="/public/build/angular-tools.js"></script>
+    <!-- Calendar -->
+    <script src="/public/build/angular-calendar.js"></script>
+    <script src="/public/build/all.js"></script>
+
+    <!-- Main jquery js  -->
+    <script src="/public/lib/main.js"></script>
+
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>

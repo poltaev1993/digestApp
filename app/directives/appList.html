@@ -1,0 +1,18 @@
+<div class="col-md-6 one-app-item">
+
+    <a data-ng-if="metaAppsObject.url != null && metaAppsObject.url != ''" href="[[ metaAppsObject.url ]]" class="app">
+        <h2 class="app-title">[[ metaAppsObject.app_title ]]</h2>
+        <p>
+            [[ metaAppsObject.description ]]
+        </p>
+        <img src="[[ metaAppsObject.app_icon ]]" alt="[[ metaAppsObject.app_title ]]" class="app-icon">
+    </a>
+
+    <a data-ng-if="metaAppsObject.url == null || metaAppsObject.url == ''" href="pages/apps.html" class="app">
+        <h2 class="app-title">[[ metaAppsObject.app_title ]]</h2>
+        <p>
+            [[ metaAppsObject.description ]]
+        </p>
+        <img src="[[ metaAppsObject.app_icon ]]" alt="[[ metaAppsObject.app_title ]]" class="app-icon">
+    </a>
+</div>
